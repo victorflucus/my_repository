@@ -1,0 +1,34 @@
+[
+{
+    "model": "product.product",
+    "pk": 1,
+    "fields": {
+        "name": "Prod 1:Tent, *featured*",
+        "featured": true
+    }
+},
+{
+    "model": "product.product",
+    "pk": 2,
+    "fields": {
+        "name": "Prod 2:Sleeping Bag",
+        "featured": false
+    }
+},
+{
+    "model": "product.product",
+    "pk": 3,
+    "fields": {
+        "name": "Prod 3:Lantern",
+        "featured": false
+    }
+},
+{
+    "model": "product.product",
+    "pk": 4,
+    "fields": {
+        "name": "Prod 4:Propane",
+        "featured": false
+    }
+}
+]
