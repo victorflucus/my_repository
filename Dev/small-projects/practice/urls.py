@@ -1,4 +1,4 @@
-"""exercises URL Configuration
+"""practice URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/4.0/topics/http/urls/
@@ -15,8 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from practice import views
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('practice/', include('practice.urls'))
+    path('', views.all_sites, name = "all_projects")
+    path('<int:pk>', views.site_detail, name='site_detail')
 ]

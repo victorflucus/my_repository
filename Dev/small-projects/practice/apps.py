@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class ClicktoadditemsConfig(AppConfig):
+class PracticeConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'clickToAddItems'
+    name = 'practice'
