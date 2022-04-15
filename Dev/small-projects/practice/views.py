@@ -1,20 +1,33 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.urls import reverse
 from practice.models import Project
 
 # Create your views here.
 
-# this is an example view
-def project_list(request):
-    return render(request, 'practice/index.html')
+
+#View redirects to page depending on user's selection
+def redirector(request, pk):
+    project = Project.objects.get(pk=pk)
+    site_name = project.title
+    return redirect(reverse(f"practice:{site_name}"))
 
 # Main list of javascript sites
 def all_sites(request):
 # query my project model to return all site objects
     projects = Project.objects.all()
 # return a rendered template with the site information passed into it
-    return(render(request, 'projects/all_sites.html', {'projects':projects}))
+    return render(request, 'practice/all_sites.html', {'projects':projects})
 
-def site_detail(request, pk):
-    # get an object from my product model that matches a specific pk passed in the url
-    project = Project.objects.get(pk=pk)
-    return(render(request, 'projects/site_detil.html', {'projects':project}))
+def clickToAddItems(request):
+    return render(request, 'practice/clickToAddItems.html')
+
+def displayEvens(request):
+    return render(request, 'practice/displayEvens.html')
+
+def displayMousePosition(request):
+    return render(request, 'practice/displayMousePosition.html')
+
+def luckySevens(request):
+    return render(request, 'practice/luckySevens.html')
+
+
