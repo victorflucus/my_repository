@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
+
 from django.urls import reverse
+
 from practice.models import Project
+
 
 # Create your views here.
 
@@ -11,7 +14,6 @@ def redirector(request, pk):
     site_name = project.title
     return redirect(reverse(f"practice:{site_name}"))
 
-# Main list of javascript sites
 def all_sites(request):
 # query my project model to return all site objects
     projects = Project.objects.all()
