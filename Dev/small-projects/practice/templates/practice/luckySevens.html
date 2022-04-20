@@ -1,20 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lucky Sevens</title>
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-</head>
-<style>
-div .input-group {
-  margin-top: 8px;
-}
-}
-</style>
+    {% extends 'practice/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
 <body>
     <div class="container">
       <div class = "row col-sm-12">
@@ -75,6 +63,6 @@ div .input-group {
          </table>
     </div> <!-- end of .container div -->
 
-<script src="scripts/luckySevens.js"></script>
-</body>
-</html>
+    <script src="{% static 'practice/scripts/luckySevens.js' %}"></script>
+
+    {% endblock %}

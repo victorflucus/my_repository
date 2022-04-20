@@ -24,4 +24,6 @@ urlpatterns = [
     path('displayEvens', views.displayEvens, name='displayEvens'),
     path('displayMousePosition', views.displayMousePosition, name='displayMousePosition'),
     path('luckySevens', views.luckySevens, name='luckySevens'),
+    path('addNewProject', views.addNewProject, name='addNewProject'),
+    path('newProjectIdeas', views.newProjectIdeas, name ='newProjectIdeas'),
 ]

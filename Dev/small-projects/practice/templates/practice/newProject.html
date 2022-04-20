@@ -1,0 +1,20 @@
+{% extends 'practice/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+    <h1>Do you have an idea for a new project?</h1>
+    <p>Please fill out the form below to let me know!</p>
+    <p>Your input is very much appreciated. </p>
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <table>
+    {{ form.as_table }}
+    </table>
+    <input type="submit" value="Submit">
+  </form>
+
+{% endblock %}
+

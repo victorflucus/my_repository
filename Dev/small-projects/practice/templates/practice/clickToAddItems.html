@@ -1,13 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>CODE-ALONG: Click to Add Items</title>
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-</head>
-<body>
+    {% extends 'practice/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+
+
     <div class="container">
         <h1>CODE-ALONG: Click to Add Items</h1>
 
@@ -68,6 +66,6 @@
 
     </div> <!-- end .container -->
 
-    <script src="static/scripts/clickToAddItems.js"></script>
-</body>
-</html>
+    <script src="{% static 'practice/scripts/clickToAddItems.js' %}"></script>
+
+    {% endblock %}

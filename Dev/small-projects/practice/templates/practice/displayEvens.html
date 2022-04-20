@@ -1,17 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Display Evens</title>
-    <link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-        crossorigin="anonymous">
-</head>
-<body>
+    {% extends 'practice/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
     <div class="container">
-      <h1>Sample</<h1>
+      <h1>Display Evens</<h1>
         <form name="evenNumbers" class="form-horizontal needs-validation" onsubmit="return validate();"
          novalidate>
 
@@ -55,6 +49,6 @@
 
     </div> <!-- end container -->
 
-    <script src="scripts/displayEvens.js"></script>
-</body>
-</html>
+    <script src="{% static 'practice/scripts/displayEvens.js' %}"></script>
+
+    {% endblock %}
