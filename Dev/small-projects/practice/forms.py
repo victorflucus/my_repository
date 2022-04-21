@@ -20,12 +20,14 @@ class AddNewProject(forms.Form):
         return date_data
 
     def clean_tittle(self):
-        title = self.cleaned_data['title']
+        title_data = self.cleaned_data['title']
+        return title_data
 
     def clean_details(self):
-        details = self.cleaned_data['details']
+        details_data = self.cleaned_data['details']
+        return details_data
 
     def clean_estimated_hours(self):
-        estimated_hours = self.cleaned_data['estimated_hours']
-
+        estimated_hours_data = self.cleaned_data['estimated_hours']
+        return estimated_hours_data
 
