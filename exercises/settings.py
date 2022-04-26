@@ -88,19 +88,19 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-import os
-DATABASE_KEY = os.environ.get('DATABASE_KEY')
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'small_projects',
-        'USER': 'root',
-        'PASSWORD': DATABASE_KEY,
-        'HOST': '127.0.0.1',
-        'PORT': '3306',
-    }
-}
+# import os
+# DATABASE_KEY = os.environ.get('DATABASE_KEY')
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'small_projects',
+#         'USER': 'root',
+#         'PASSWORD': DATABASE_KEY,
+#         'HOST': '127.0.0.1',
+#         'PORT': '3306',
+#     }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
