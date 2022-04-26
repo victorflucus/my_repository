@@ -31,7 +31,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 import os
-SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-hm!zw^r4qdr%a)l+$wk$tqxz=pjw4lpzou)*%re6cl@lbm(ps&')
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
