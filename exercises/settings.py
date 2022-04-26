@@ -88,7 +88,7 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 import os
 from urllib.parse import urlparse
 
-url = urlparse.urlparse(os.environ['DATABASE_URL'])
+url = urlparse(os.environ['DATABASE_URL'])
 
 DATABASES = dict()
 DATABASES['default'] = DATABASES.get('default', {})
