@@ -4,6 +4,9 @@
 
     {% block content %}
 
+
+
+    <main>
     <div class="container">
         <h5>Projects</h5>
         <div class="row">
@@ -15,27 +18,31 @@
                         <p class="card-text">{{ project.description }}</p>
                         <a href="{% url 'practice:redirector' project.pk %}"
                         class="btn btn-primary">
-                            Read More
+                            Continue
                         </a>
                     </div>
                 </div>
             </div>
         {% endfor %}
-         <br>
-        <hr style="opacity:0">
-        <div class="container">
-            <div class="row">
-                  <div class="col-8"></div>
-                    <div class="col-4">
-                <h5>Do you have an idea for a new project?</h5>
-                <p>Please click here to submit a request:</p>
-                <a href="addNewProject" class="btn btn-primary">
-                    Project Requests
-                </a>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
+    </main>
 
-    {% endblock %}
+    <footer class="footer mt-auto py-3 bg-light" style = "position:fixed; bottom:0; left:0; width:100%">
+    <div class="container">
+        <div class="row">
+                <div class="col-10">
+                    <span class="text-muted">
+                        Do you have an idea for a new project?
+                        Please click here to submit a request:
+                    </span>
+                </div>
+                <div class="col-2">
+                    <a href="addNewProject" class="btn btn-primary">
+                    Project Requests
+                    </a>
+                </div>
+        </div>
+    </div>
+    </footer>
+        {% endblock %}

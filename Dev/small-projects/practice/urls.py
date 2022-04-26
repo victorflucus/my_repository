@@ -21,8 +21,8 @@ urlpatterns = [
     path('', views.all_sites, name='all_sites'),
     path('<int:pk>', views.redirector, name='redirector'),
     path('clickToAddItems', views.clickToAddItems, name='clickToAddItems'),
-    path('displayEvens', views.displayEvens, name='displayEvens'),
     path('displayMousePosition', views.displayMousePosition, name='displayMousePosition'),
     path('luckySevens', views.luckySevens, name='luckySevens'),
     path('addNewProject', views.addNewProject, name='addNewProject'),
+    path("projectIdeas", views.projectIdeas, name='projectIdeas'),
 ]

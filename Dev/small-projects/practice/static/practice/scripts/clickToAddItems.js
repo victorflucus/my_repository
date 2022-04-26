@@ -32,7 +32,6 @@ function validate() {
     results.style.display = "block";
     submitButton.innerText = "Recalculate";
 
-    // We always return false so that the form doesn't submit.
     // Submission causes the page to reload.
     return false;
 }
