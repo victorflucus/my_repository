@@ -88,19 +88,25 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-# import os
-# DATABASE_KEY = os.environ.get('DATABASE_KEY')
-#
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'small_projects',
-#         'USER': 'root',
-#         'PASSWORD': DATABASE_KEY,
-#         'HOST': '127.0.0.1',
-#         'PORT': '3306',
-#     }
-# }
+import os
+DATABASE_KEY = os.environ.get('DATABASE_KEY')
+
+DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.mysql',
+    #     'NAME': 'small_projects',
+    #     'USER': 'root',
+    #     'PASSWORD': DATABASE_KEY,
+    #     'HOST': '127.0.0.1',
+    #     'PORT': '3306',
+    # }
+}
+# Heroku: Update database configuration from $DATABASE_URL.
+import dj_database_url
+
+DATABASES['default'] = dj_database_url.config(
+    default=os.environ.get('DATABASE_URL'),
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -149,7 +155,3 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
