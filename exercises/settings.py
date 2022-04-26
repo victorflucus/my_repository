@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 import os
-import dotenv # <- New
+import dotenv
 
 # Add .env variables anywhere before SECRET_KEY
 dotenv_file = os.path.join(BASE_DIR, ".env")
