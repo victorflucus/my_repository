@@ -1,0 +1,23 @@
+    {% extends 'practice/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+    <div class="container">
+        <h5>New Project Ideas</h5>
+        <p>Here you'll find a compilation of all submitted project ideas.</p>
+        {% for idea in project_ideas %}
+            <div class="col-md-4">
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Project Title: {{ idea.title }}</h5>
+                        <p class="card-text">Project Details: {{ idea.details }}</p>
+                         <h6 class="card-title">Due: {{ idea.due_date }}</h6>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+{% endblock %}

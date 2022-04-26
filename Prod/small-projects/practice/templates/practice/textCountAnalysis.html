@@ -1,0 +1,24 @@
+    {% extends 'practice/base.html' %}
+
+    {% load static %}
+
+    {% block content %}
+
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Text Count Analysis</h1>
+    <p class="lead">This code will start with a paragraph of text and end up with a frequency count of the distinct words in that text.</p>
+    <p>Please enter the text you would like to analyze as well as some optional accompanying information. </p>
+  </div>
+    <div class="container">
+      <form action="" method="post">
+        {% csrf_token %}
+        <table>
+        {{ form.as_table }}
+        </table>
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+</main>
+
+    {% endblock %}
