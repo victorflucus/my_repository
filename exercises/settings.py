@@ -88,7 +88,6 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-
 import os
 DATABASE_KEY = os.environ.get('DATABASE_KEY')
 
@@ -102,7 +101,6 @@ DATABASES = {
         'PORT': '3306',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
