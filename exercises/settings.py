@@ -15,7 +15,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
@@ -31,15 +30,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = os.environ['SECRET_KEY']
 
 import os
+
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 # DEBUG = True
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
-
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost' ]
-
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -50,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    #my apps
+    # my apps
     'practice',
 ]
 
@@ -70,7 +68,7 @@ ROOT_URLCONF = 'exercises.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/ 'templates'],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -85,12 +83,25 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'exercises.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
-# import os
-# DATABASE_KEY = os.environ.get('DATABASE_KEY')
-#
+import os
+from urllib.parse import urlparse
+
+url = urlparse.urlparse(os.environ['DATABASE_URL'])
+
+DATABASES = dict()
+DATABASES['default'] = DATABASES.get('default', {})
+
+DATABASES['default'].update({
+    'ENGINE': 'django.db.backends.mysql',
+    'NAME': url.path[1:],
+    'USER': url.username,
+    'PASSWORD': url.password,
+    'HOST': url.hostname,
+    'PORT': url.port,
+})
+
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.mysql',
@@ -102,13 +113,6 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 #     }
 # }
 
-# Heroku: Update database configuration from $DATABASE_URL.
-import dj_database_url
-DATABASE_URL = os.environ.get('DATABASE_URL')
-
-DATABASES = {'default': dj_database_url.config(
-    default=DATABASE_URL,
-)}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
@@ -128,7 +132,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 
@@ -140,20 +143,16 @@ USE_I18N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 # The absolute path to the directory where collectstatic will collect static files for deployment.
-STATIC_ROOT = BASE_DIR /'practice/static'
+STATIC_ROOT = BASE_DIR / 'practice/static'
 
 # The URL to use when referring to static files (where they will be served from)
 STATIC_URL = '/static/'
-
-
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
