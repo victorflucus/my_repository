@@ -34,7 +34,6 @@ import os
 SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
 ALLOWED_HOSTS = ['vjf-small-projects.herokuapp.com','127.0.0.1', 'localhost']
@@ -87,9 +86,13 @@ WSGI_APPLICATION = 'exercises.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 import os
 from urllib.parse import urlparse
+from sqlalchemy.engine.url import make_url
+
 
 data_key = os.environ.get('DATABASE_URL')
 url = urlparse(data_key)
+urlb = make_url(f"{data_key}")
+
 
 DATABASES = dict()
 DATABASES['default'] = DATABASES.get('default', {})
@@ -97,10 +100,10 @@ DATABASES['default'] = DATABASES.get('default', {})
 DATABASES['default'].update({
     'ENGINE': 'django.db.backends.mysql',
     'NAME': url.path[1:],
-    'USER': url.username,
-    'PASSWORD': url.password,
-    'HOST': url.hostname,
-    'PORT': url.port,
+    'USER': urlb.username,
+    'PASSWORD': urlb.password,
+    'HOST': urlb.host,
+    'PORT': urlb.port,
     'OPTIONS': {
         'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
     }
