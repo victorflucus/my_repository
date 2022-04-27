@@ -90,6 +90,8 @@ from sqlalchemy.engine.url import make_url
 
 
 data_key = os.environ.get('DATABASE_URL')
+print(data_key)
+print(type(data_key))
 url = urlparse(data_key)
 urlb = make_url(f"{data_key}")
 
