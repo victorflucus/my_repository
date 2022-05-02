@@ -18,17 +18,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
-# # SECURITY WARNING: keep the secret key used in production secret!
-# import os
-# import dotenv
-#
-# # Add .env variables anywhere before SECRET_KEY
-# dotenv_file = os.path.join(BASE_DIR, ".env")
-# if os.path.isfile(dotenv_file):
-#     dotenv.load_dotenv(dotenv_file)
-# UPDATE secret key
-# SECRET_KEY = os.environ['SECRET_KEY']
-
+# SECURITY WARNING: keep the secret key used in production secret!
 import os
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
@@ -36,7 +26,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = str(os.environ.get('DEBUG')) == "1"
 
-ALLOWED_HOSTS = ['vjf-small-projects.herokuapp.com','127.0.0.1', 'localhost']
+ALLOWED_HOSTS = ['vjf-small-projects.herokuapp.com', '127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -88,13 +78,11 @@ import os
 from urllib.parse import urlparse
 from sqlalchemy.engine.url import make_url
 
-
 data_key = os.environ.get('DATABASE_URL')
 print(data_key)
 print(type(data_key))
 url = urlparse(data_key)
 urlb = make_url(f"{data_key}")
-
 
 DATABASES = dict()
 DATABASES['default'] = DATABASES.get('default', {})
