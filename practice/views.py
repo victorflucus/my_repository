@@ -26,7 +26,8 @@ def all_sites(request):
     return render(request, 'practice/all_sites.html', {'projects': projects})
 
 def textCountAnalysisResults(request):
-    return render(request, 'practice/textCountAnalysisResults.html')
+    text_data = TextCountAnalysisEntries.objects.all()
+    return render(request, 'practice/textCountAnalysisResults.html', {'text_data': text_data})
 
 
 def textCountAnalysis(request):
@@ -51,12 +52,10 @@ def textCountAnalysis(request):
             new_text.save()
             #call text cout analysis function
             result = analyze(new_text.paragraph)
-            context = {
-                'frequency': result[0],
-                'distinct_words': result[1],
-            }
-            return HttpResponse(result, content_type='text/plain')
-            return redirect(reverse(f"practice:textCountAnalysisResults"), context)
+            new_text.frequency_result = result[0]
+            new_text.distinct_words_result = result[1]
+            new_text.save()
+            return redirect(reverse(f"practice:textCountAnalysisResults"))
     # If this is not a post request
     else:
         # Initialize form variables and load fresh form

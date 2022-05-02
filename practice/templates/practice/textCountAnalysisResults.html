@@ -12,13 +12,13 @@
     <div class="container">
       <h2>Unique Words</h2>
         <ul>
-        {% for word in distinct_words %}
+        {% for word in distinct_words_result %}
             <li>{{ word }}</li>
         {% endfor %}
         </ul>
       <h2>Word Frequencies:</h2>
         <ul>
-        {% for key, value in frequency.items %}
+        {% for key, value in frequency_result.items %}
             <li>{{ key }} : {{ value }}</li>
         {% endfor %}
         </ul>
