@@ -23,6 +23,8 @@ urlpatterns = [
     path('clickToAddItems', views.clickToAddItems, name='clickToAddItems'),
     path('displayMousePosition', views.displayMousePosition, name='displayMousePosition'),
     path('luckySevens', views.luckySevens, name='luckySevens'),
+    path('textCountAnalysis', views.textCountAnalysis, name='textCountAnalysis'),
+    path('textCountAnalysisResults', views.textCountAnalysisResults, name='textCountAnalysisResults'),
     path('addNewProject', views.addNewProject, name='addNewProject'),
     path("projectIdeas", views.projectIdeas, name='projectIdeas'),
 ]

@@ -1,0 +1,28 @@
+{% extends 'practice/base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<main class="flex-shrink-0">
+  <div class="container">
+    <h1 class="mt-5">Text Count Analysis</h1>
+   <p> Here are your results:</p>
+  </div>
+    <div class="container">
+      <h2>Unique Words</h2>
+        <ul>
+        {% for word in distinct_words %}
+            <li>{{ word }}</li>
+        {% endfor %}
+        </ul>
+      <h2>Word Frequencies:</h2>
+        <ul>
+        {% for key, value in frequency.items %}
+            <li>{{ key }} : {{ value }}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</main>
+
+{% endblock %}

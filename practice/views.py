@@ -1,10 +1,12 @@
 import datetime
 
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse
 
-from practice.models import Project, ProjectIdeas
-from practice.forms import AddNewProject
+from practice.models import Project, ProjectIdeas, TextCountAnalysisEntries
+from practice.forms import AddNewProject, TextCountAnalysis
+
+from practice.textCountAnalysis import analyze
 
 
 # Create your views here.
@@ -23,6 +25,57 @@ def all_sites(request):
     # return a rendered template with the site information passed into it
     return render(request, 'practice/all_sites.html', {'projects': projects})
 
+def textCountAnalysisResults(request):
+    return render(request, 'practice/textCountAnalysisResults.html')
+
+
+def textCountAnalysis(request):
+    # Initialize model entry
+    new_text = TextCountAnalysisEntries()
+    # If this is a post request....
+    if request.method == 'POST':
+        # initialize form with info from POST
+        form = TextCountAnalysis(request.POST)
+        # If form entries aren't valid, return to user with errors
+        if not form.is_valid():
+            context = {
+                'form': form,
+            }
+            return render(request, 'practice/addNewProject.html', context)
+        # If the entries are valid
+        else:
+            # write form.cleaned_data to the appropriate model fields and redirect the page
+            new_text.title = form.cleaned_data['title']
+            new_text.paragraph = form.cleaned_data['paragraph']
+            new_text.source = form.cleaned_data['source']
+            new_text.save()
+            #call text cout analysis function
+            result = analyze(new_text.paragraph)
+            context = {
+                'frequency': result[0],
+                'distinct_words': result[1],
+            }
+            return HttpResponse(result, content_type='text/plain')
+            return redirect(reverse(f"practice:textCountAnalysisResults"), context)
+    # If this is not a post request
+    else:
+        # Initialize form variables and load fresh form
+        title = ''
+        paragraph = ''
+        source = ''
+
+        form = TextCountAnalysis(initial={
+            'title': title,
+            'paragraph': paragraph,
+            'source': source,
+        })
+
+        context = {
+            'form': form,
+            'new_text': new_text,
+        }
+
+        return render(request, 'practice/textCountAnalysis.html', context)
 
 def clickToAddItems(request):
     return render(request, 'practice/clickToAddItems.html')
@@ -65,6 +118,7 @@ def addNewProject(request):
             project_idea.estimated_hours = form.cleaned_data['estimated_hours']
             project_idea.save()
             return redirect(reverse(f"practice:projectIdeas"))
+
     # If this is a GET (or any other method) create default form
     else:
         title = ''
